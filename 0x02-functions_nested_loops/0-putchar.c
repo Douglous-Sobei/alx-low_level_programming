@@ -1,4 +1,5 @@
 #include "main.h"
+
 /**
  * main - This program prints the phrase Hello, World
  * Return: Always 0 (Success)
@@ -12,7 +13,7 @@ int main(void)
 	{
 		_putchar(ch[i]);
 	}
-	
+
 	_putchar('\n');
 	return (0);
-}	
+}
