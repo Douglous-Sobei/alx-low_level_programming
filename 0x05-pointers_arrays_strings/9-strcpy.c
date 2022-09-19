@@ -1,4 +1,5 @@
-#include "main,h"
+#include "main.h"
+
 /**
  * _strcpy - this fuction copy the pointer to variable.
  * @src: is the pointer is the origin.
