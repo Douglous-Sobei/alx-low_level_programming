@@ -1,18 +1,12 @@
 #include "main.h"
+#include <stdio.h.>I
 /**
- * _atoi - Function that convert strin to int
- * @arr: String to convert to int
- *
- * Return: Value of converted number
- */
-int _atoi(char *arr)
+* _atoi - function that convert a string to an integer.
+* @s: string
+* Return: integer
+*/
+
+int _atoi(char *s)
 {
-	int i = 0, convert = 0;
-
-	for (i = 0; arr[i] != '\0'; ++i)
-	{
-		convert = convert * 10 + arr[i] - '0';
-	}
-
-	return (convert);
+	return (*s);
 }
