@@ -2,10 +2,11 @@
 #define MAIN_H
 
 /**
- * File: main.h
- * Auth: Jan Nelson
+ * File - Main.h
+ * Auth: Douglous Sobei
  * Desc: Header file containing prototypes for all functions
- *       used in the 0x05-pointers_arrays_strings directory.
+ *       used in the 0x05-pointers_arrays_strings directory
+ * return -Return value of _putchar
  */
 
 int _putchar(char c);
@@ -21,6 +22,5 @@ char *rot13(char *);
 void print_number(int n);
 char *infinite_add(char *n1, char *n2, char *r, int size_r);
 void print_buffer(char *b, int size);
-int main(void)i;
 
 #endif
