@@ -1,38 +1,62 @@
-#include <stdio.h>
+#include "main.h"
 #include <stdlib.h>
-
-char **strtow(char *);
-
 /**
- * print_tab - Prints an array of string
- *
- * @tab: The array to print
+ * ch_free_grid - Main Entry
+ * @grid: input
+ * @height: input
  */
-void print_tab(char **tab)
+void ch_free_grid(char **grid, unsigned int height)
 {
-	int i;
-
-	for (i = 0; tab[i] != NULL; ++i)
+	if (grid != NULL && height != 0)
 	{
-		printf("%s\n", tab[i]);
+		for (; height > 0; height--)
+			free(grid[height]);
+		free(grid[height]);
+		free(grid);
 	}
 }
-
 /**
- * main - check the code .
- *
- * Return: Always 0.
+ * strtow - Main Entry
+ * @str: input
+ * Return: 0
  */
-int main(void)
+char **strtow(char *str)
 {
-	char **tab;
+	char **aout;
+	unsigned int c, height, i, j, a1;
 
-	tab = strtow("Talk is cheap. Show me the code.");
-	if (tab == NULL)
+	if (str == NULL || *str == '\0')
+		return (NULL);
+	for (c = height = 0; str[c] != '\0'; c++)
+		if (str[c] != ' ' && (str[c + 1] == ' ' || str[c + 1] == '\0'))
+			height++;
+	aout = malloc((height + 1) * sizeof(char *));
+	if (aout == NULL || height == 0)
 	{
-		printf("Failed\n");
-		return (1);
+		free(aout);
+		return (NULL);
 	}
-	print_tab(tab);
-	return (0);
+	for (i = a1 = 0; i < height; i++)
+	{
+		for (c = a1; str[c] != '\0'; c++)
+		{
+			if (str[c] == ' ')
+				a1++;
+			if (str[c] != ' ' && (str[c + 1] == ' ' || str[c + 1] == '\0'))
+			{
+				aout[i] = malloc((c - a1 + 2) * sizeof(char));
+				if (aout[i] == NULL)
+				{
+					ch_free_grid(aout, i);
+					return (NULL);
+				}
+				break;
+			}
+		}
+		for (j = 0; a1 <= c; a1++, j++)
+			aout[i][j] = str[a1];
+		aout[i][j] = '\0';
+	}
+	aout[i] = NULL;
+	return (aout);
 }
