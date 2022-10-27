@@ -1,49 +1,46 @@
 #include "lists.h"
 
 /**
- * insert_nodeint_at_index - inserts a new node at a given position.
+ * delete_nodeint_at_index - deletes the node at index of a listint_t list.
  * @head: pointer to the list.
- * @idx: position to add the node.
- * @n: data for the new node.
- * Return: the address of the new node, or NULL if it failed
+ * @index: position of the node to delete.
+ * Return: 1 if it succeeded, -1 if it failed.
  **/
-listint_t *insert_nodeint_at_index(listint_t **head, unsigned int idx, int n)
+int delete_nodeint_at_index(listint_t **head, unsigned int index)
 {
 	listint_t *aux_node = *head;
-	listint_t *new_node;
-	unsigned int index;
+	listint_t *node_to_delete = *head;
+	unsigned int idx;
 	unsigned int cont = 0;
 
-	/* create node */
-	new_node = malloc(sizeof(listint_t));
-	if (new_node == NULL)
-		return (NULL);
-	new_node->n = n;
+	/* border case for empty list */
+	if (!(*head))
+		return (-1);
 
-	/* border case for insert at the beginning */
-	if (idx == 0)
+	/* border case for delete at the beginning */
+	if (index == 0)
 	{
-		new_node->next = *head;
-		*head = new_node;
-		return (*head);
+		*head = node_to_delete->next;
+		free(node_to_delete);
+		return (1);
 	}
 
-	/* search of position to insert */
-	index = idx - 1;
-	while (aux_node && cont != index)
+	/* search of position to delete */
+	idx = index - 1;
+	while (aux_node && cont != idx)
 	{
 		cont++;
 		aux_node = aux_node->next;
 	}
 
 	/* general case */
-	if (cont == index && aux_node)
+	if (cont == idx && aux_node)
 	{
-		new_node->next = aux_node->next;
-		aux_node->next = new_node;
-		return (new_node);
+		node_to_delete = aux_node->next;
+		aux_node->next = node_to_delete->next;
+		free(node_to_delete);
+		return (1);
 	}
 
-	free(new_node);
-	return (NULL);
+	return (-1);
 }
