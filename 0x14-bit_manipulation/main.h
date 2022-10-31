@@ -1,6 +1,9 @@
 #ifndef MAIN_H
 #define MAIN_H
 
+#include <stdio.h>
+#include <stdlib.h>
+
 /*
  * File: holberton.h
  * AUth: Brennan D Baraban
