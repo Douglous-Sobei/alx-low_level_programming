@@ -13,9 +13,9 @@ unsigned inti a;
 
 tmp = head;
 a = 0;
-if (head == 0)
+if (head == NULL)
 return (NULL);
-while (tmp != 0)
+while (tmp != NULL)
 {
 if (i == index)
 return (tmp);
