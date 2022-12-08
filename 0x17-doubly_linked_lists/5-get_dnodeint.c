@@ -14,7 +14,7 @@ unsigned inti a;
 tmp = head;
 a = 0;
 if (head == 0)
-return (0);
+return (NULL);
 while (tmp != 0)
 {
 if (i == index)
@@ -22,5 +22,5 @@ return (tmp);
 tmp = tmp->next;
 a++;
 }
-return (0);
+return (NULL);
 }
